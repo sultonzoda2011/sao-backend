@@ -99,6 +99,6 @@ export class ChatsService {
       orderBy: { updatedAt: 'desc' },
     });
 
-    return Promise.all(chats.map((chat) => this.formatChat(chat, userId)));
+    return Promise.all(chats.map((chat: any) => this.formatChat(chat, userId)));
   }
 }

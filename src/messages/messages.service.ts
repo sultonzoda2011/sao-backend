@@ -52,7 +52,7 @@ export class MessagesService {
       ...(cursor ? { cursor: { id: cursor }, skip: 1 } : {}),
     });
 
-    return messages.reverse().map((m) => this.serialize(m));
+    return messages.reverse().map((m: any) => this.serialize(m));
   }
 
   async updateMessage(messageId: string, userId: string, text: string) {
