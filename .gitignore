@@ -5,3 +5,5 @@ uploads/*
 !uploads/.gitkeep
 *.log
 .DS_Store
+package-lock.json
+tsconfig.build.tsbuildinfo
