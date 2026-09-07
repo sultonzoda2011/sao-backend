@@ -14,7 +14,14 @@
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
     "prisma:deploy": "prisma migrate deploy",
-    "prisma:studio": "prisma studio"
+    "prisma:studio": "prisma studio",
+    "postinstall": "prisma generate"
+  },
+  "allowScripts": {
+    "argon2": true,
+    "prisma": true,
+    "@prisma/client": true,
+    "@prisma/engines": true
   },
   "dependencies": {
     "@nestjs/common": "^12.0.1",
