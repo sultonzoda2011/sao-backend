@@ -10,7 +10,25 @@ NestJS + Prisma + PostgreSQL + Socket.io backend for the SAO messenger (1v1 chat
 - argon2 password hashing
 - Cloudinary for avatar storage (no local disk uploads)
 
-## Setup
+## Deploy on Railway
+
+This backend needs a long-running process (WebSocket + `argon2` native module), so it goes on **Railway**, not Vercel.
+
+1. Push this repo to GitHub.
+2. On [railway.app](https://railway.app) → **New Project** → **Deploy from GitHub repo** → pick `sao-backend`.
+3. **Add a database**: in the same project, **New** → **Database** → **PostgreSQL**. Railway creates it and exposes `DATABASE_URL` automatically as a reference variable.
+4. In the backend service → **Variables**, add:
+   - `DATABASE_URL` → reference the Postgres plugin's `DATABASE_URL` (Railway suggests this automatically)
+   - `JWT_ACCESS_SECRET` → any long random string
+   - `JWT_ACCESS_EXPIRES_IN` → `7d`
+   - `CORS_ORIGIN` → your frontend's URL, e.g. `https://sao-gram.vercel.app`
+   - `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`
+   - `PORT` is injected by Railway automatically — don't set it yourself.
+5. Deploy. `railway.json` is already set up to run `prisma migrate deploy` before starting the server, and to healthcheck `/api/health`.
+6. Once live, Railway gives you a domain like `sao-backend-production.up.railway.app`. Point the frontend's `VITE_API_URL` to `https://<that-domain>/api` and `VITE_WS_URL` to `https://<that-domain>/ws`.
+
+## Local Setup
+
 
 ```bash
 npm install

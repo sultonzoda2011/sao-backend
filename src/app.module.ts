@@ -7,6 +7,7 @@ import { UsersModule } from './users/users.module';
 import { ChatsModule } from './chats/chats.module';
 import { MessagesModule } from './messages/messages.module';
 import { GatewayModule } from './gateway/gateway.module';
+import { HealthController } from './health.controller';
 
 @Module({
   imports: [
@@ -19,5 +20,6 @@ import { GatewayModule } from './gateway/gateway.module';
     MessagesModule,
     GatewayModule,
   ],
+  controllers: [HealthController],
 })
 export class AppModule {}

@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "SAO Messenger backend (NestJS + Prisma + PostgreSQL + Socket.io)",
   "private": true,
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\"",
